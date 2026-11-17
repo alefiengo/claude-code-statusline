@@ -64,6 +64,17 @@ There is no CI on this repository, so this check is up to you and to the reviewe
 - For visual changes, include a before and after screenshot.
 - Fill in the pull request template.
 
+## Releases
+
+For maintainers. The installer downloads `statusline.sh` from the assets of the latest release, so every
+release must attach it:
+
+```sh
+gh release create vX.Y.Z statusline.sh --title vX.Y.Z --notes-file notes.md
+```
+
+A release without that asset breaks the installer for everyone.
+
 ## License
 
 By contributing, you agree that your contributions are licensed under the [MIT License](LICENSE).

@@ -49,7 +49,9 @@ curl -fsSL https://raw.githubusercontent.com/alefiengo/claude-code-statusline/ma
 The installer:
 
 - Checks that `jq` is installed.
-- Downloads `statusline.sh` into `~/.claude`, or into `$CLAUDE_CONFIG_DIR` if you set it.
+- Downloads `statusline.sh` from the [latest release](https://github.com/alefiengo/claude-code-statusline/releases/latest)
+  into `~/.claude`, or into `$CLAUDE_CONFIG_DIR` if you set it. To install a specific release, use
+  `| STATUSLINE_VERSION=v1.0.0 bash`.
 - Adds the `statusLine` block to `settings.json` and leaves every other setting untouched.
 - Backs up any file it replaces, with a `.bak-<date>` suffix.
 - Asks before replacing a status line you already have. Add `-s -- --yes` after `bash` to skip the
@@ -60,11 +62,11 @@ Restart Claude Code when it finishes. To read the installer before running it, d
 
 ### Manual installation
 
-1. Download the script:
+1. Download the script from the latest release:
 
    ```sh
    curl -fsSL -o ~/.claude/statusline.sh \
-     https://raw.githubusercontent.com/alefiengo/claude-code-statusline/main/statusline.sh
+     https://github.com/alefiengo/claude-code-statusline/releases/latest/download/statusline.sh
    chmod +x ~/.claude/statusline.sh
    ```
 

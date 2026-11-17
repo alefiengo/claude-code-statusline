@@ -3,13 +3,21 @@
 #
 #   curl -fsSL https://raw.githubusercontent.com/alefiengo/claude-code-statusline/main/install.sh | bash
 #
-# Downloads statusline.sh into the Claude Code config directory and adds the statusLine block to
-# settings.json, leaving every other setting untouched. Existing files are backed up first.
+# Downloads statusline.sh from the latest GitHub release into the Claude Code config directory and adds
+# the statusLine block to settings.json, leaving every other setting untouched. Existing files are
+# backed up first.
 # Pass --yes (`| bash -s -- --yes`) to replace an existing status line without asking.
+# Set STATUSLINE_VERSION (`| STATUSLINE_VERSION=v1.0.0 bash`) to install a specific release.
 
 set -euo pipefail
 
-REPO_RAW='https://raw.githubusercontent.com/alefiengo/claude-code-statusline/main'
+RELEASES='https://github.com/alefiengo/claude-code-statusline/releases'
+VERSION="${STATUSLINE_VERSION:-latest}"
+if [ "$VERSION" = latest ]; then
+  SCRIPT_URL="$RELEASES/latest/download/statusline.sh"
+else
+  SCRIPT_URL="$RELEASES/download/$VERSION/statusline.sh"
+fi
 CONFIG_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 SCRIPT="$CONFIG_DIR/statusline.sh"
 SETTINGS="$CONFIG_DIR/settings.json"
@@ -35,7 +43,7 @@ confirm() {
   [[ "$answer" =~ ^[Yy] ]]
 }
 
-echo "Installing claude-code-statusline into $CONFIG_DIR"
+echo "Installing claude-code-statusline ($VERSION release) into $CONFIG_DIR"
 
 # Requirements
 command -v curl >/dev/null || fail "curl is required."
@@ -69,7 +77,7 @@ fi
 # Script: download to a temporary file and check it before replacing anything.
 tmp=$(mktemp)
 trap 'rm -f "$tmp"' EXIT
-curl -fsSL "$REPO_RAW/statusline.sh" -o "$tmp" || fail "Could not download statusline.sh."
+curl -fsSL "$SCRIPT_URL" -o "$tmp" || fail "Could not download statusline.sh from the $VERSION release."
 head -1 "$tmp" | grep -q '^#!/usr/bin/env bash' || fail "The downloaded file is not the expected script."
 
 if [ -e "$SCRIPT" ] || [ -L "$SCRIPT" ]; then
