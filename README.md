@@ -37,7 +37,28 @@ provide is hidden, and the second line disappears entirely when it is empty.
 - `git` (optional, only for the Git segment)
 - GNU or BSD `date`
 
+Tested on Linux (WSL2). macOS should work, since the script supports BSD `date`, but it has not been
+tested yet; reports are welcome. On Windows, use it from WSL.
+
 ## Installation
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/alefiengo/claude-code-statusline/main/install.sh | bash
+```
+
+The installer:
+
+- Checks that `jq` is installed.
+- Downloads `statusline.sh` into `~/.claude`, or into `$CLAUDE_CONFIG_DIR` if you set it.
+- Adds the `statusLine` block to `settings.json` and leaves every other setting untouched.
+- Backs up any file it replaces, with a `.bak-<date>` suffix.
+- Asks before replacing a status line you already have. Add `-s -- --yes` after `bash` to skip the
+  question.
+
+Restart Claude Code when it finishes. To read the installer before running it, download
+[`install.sh`](install.sh) first.
+
+### Manual installation
 
 1. Download the script:
 

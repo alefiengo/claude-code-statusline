@@ -40,7 +40,7 @@ The field reference is in the [official status line documentation](https://code.
 Run [ShellCheck](https://www.shellcheck.net/) before opening a pull request:
 
 ```sh
-shellcheck statusline.sh
+shellcheck statusline.sh install.sh
 ```
 
 There is no CI on this repository, so this check is up to you and to the reviewer.

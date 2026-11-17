@@ -4,7 +4,7 @@
 
 ## Checklist
 
-- [ ] `shellcheck statusline.sh` passes
+- [ ] `shellcheck statusline.sh install.sh` passes
 - [ ] Tested with full, partial and empty (`{}`) input
 - [ ] Before and after screenshot included, if the change is visual
 - [ ] Tested on: <!-- Linux, macOS, WSL... -->
