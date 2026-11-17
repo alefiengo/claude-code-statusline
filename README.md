@@ -88,8 +88,7 @@ echo '{"model":{"display_name":"Opus 5.5"},"effort":{"level":"high"},"context_wi
 
 ## Contributing
 
-Issues and pull requests are welcome. Every pull request is checked with
-[ShellCheck](https://www.shellcheck.net/); run `shellcheck statusline.sh` locally before opening one.
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
